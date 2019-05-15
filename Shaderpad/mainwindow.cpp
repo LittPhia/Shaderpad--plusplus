@@ -180,27 +180,6 @@ void MainWindow::paintEvent(QPaintEvent *event)
     painter.drawPixmap(0,0,width(),height(),QPixmap(bgImage));
 }
 
-void MainWindow::dragEnterEvent(QDragEnterEvent *event)//拖动进入事件
-{
-    if(event->mimeData()->hasUrls())//数据包中是否包含URL
-        event->acceptProposedAction();//接收动作
-    else
-        event->ignore();//没有则忽略
-}
-
-void MainWindow::dropEvent(QDropEvent *event)
-{
-    const QMimeData *mimeData = event->mimeData();//获取MIME数据
-    if(mimeData->hasUrls()){//若数据包中含有URL
-        QList<QUrl> urlList = mimeData->urls();
-        //将其中第一个URL表示为本地文件路径
-        QString fileName = urlList.at(0).toLocalFile();
-        if(!fileName.isEmpty()){
-            openFile(fileName);
-        }
-    }
-}
-
 void MainWindow::openFile(const QString &fileName)
 {
     TextChild *existing = findTextChild(fileName);

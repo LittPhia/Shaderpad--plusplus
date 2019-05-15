@@ -25,6 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
+    inputtiplist.cpp \
         main.cpp \
         mainwindow.cpp \
     textchild.cpp \
